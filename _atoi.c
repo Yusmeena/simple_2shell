@@ -8,7 +8,7 @@
 */
 int interactive(info_t *info)
 {
-	return (isatty(STNDIN_FILENO) && info->readfd <= 2);
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
@@ -49,7 +49,7 @@ int _atoi(char *s)
 	int i, sign = 1, flag = 0, output;
 	unsigned int result = 0;
 
-	for (i = 0; s[i] != '0\' && flag != 2; i++)
+	for (i = 0; s[i] != '\0' && flag != 2; i++)
 	{
 		if (s[i] == '-')
 			sign *= -1;
@@ -69,5 +69,5 @@ int _atoi(char *s)
 	else
 		output = result;
 
-	result (output);
+	return (output);
 }

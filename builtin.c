@@ -9,7 +9,7 @@
 */
 int _myexit(info_t *info)
 {
-	int exitcheck:
+	int exitcheck;
 
 	if (info->argv[1]) /* if there is an exit argument */
 	{
@@ -18,7 +18,7 @@ int _myexit(info_t *info)
 		{
 			info->status = 2;
 			print_error(info, "this is illegal number: ");
-			_eputs(info->argvargv[1]);
+			_eputs(info->argv[1]);
 			_eputchar('\n');
 			return (1);
 		}
@@ -48,7 +48,7 @@ int _mycd(info_t *info)
 		dir = _getenv(info, "HOME");
 		if (!dir)
 			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = _getenv(info, "PWD="))
+				chdir((dir = _getenv(info, "PWD=")));
 		else
 			chdir_ret = chdir(dir);
 	}
@@ -69,12 +69,12 @@ int _mycd(info_t *info)
 	if (chdir_ret == -1)
 	{
 		print_error(info, "won't cd to ");
-		_eputs(info-.arg[1]), _eputchar('\n');
+		_eputs(info->argv[1]), _eputchar('\n');
 	}
 	else
 	{
 		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024, 1024));
+		_setenv(info, "PWD", getcwd(buffer, 1024));
 	}
 	return (0);
 }
@@ -88,7 +88,7 @@ int _myhelp(info_t *info)
 {
 	char **arg_array;
 
-	arg_arrray = info->argv;
+	arg_array = info->argv;
 	_putchar("Please call work. The function has not be executed \n");
 	if (0)
 		_puts(*arg_array); /* temp att_unused work */

@@ -31,12 +31,12 @@ int _eptchar(char c)
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c = BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c = BUF_FLASH || i >= WRITE_BUF_SIZE)
 	{
-		write(2,. buf, i);
+		write(2, buf, i);
 		i = 0;
 	}
-	if (c! BUF_FLUSH)
+	if (c!= BUF_FLASH)
 		buf[i++] = c;
 	return (1);
 }
@@ -49,17 +49,17 @@ int _eptchar(char c)
 * Return: 1 for success.
 * On error, returned -1, and error is set appropriately
 */
-int_pufd(char c, int fd)
+int _pufd(char c, int fd)
 {
 	static int ii;
 	static char buf[WRITE_BUF_SIZE];
 
-		if ( c = BUFF_FLUSH || ii >= WRITE_BUF_SIZE)
+		if ( c = BUF_FLASH || ii >= WRITE_BUF_SIZE)
 		{
 			write(fd, buf, ii);
 			ii = 0;
 		}
-		if (c != BUF_FLUSH)
+		if (c != BUF_FLASH)
 			buf[ii] = c;
 		return (1);
 }

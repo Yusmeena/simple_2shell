@@ -1,4 +1,4 @@
-#include "shelll.h"
+#include "shell.h"
 
 /**
 * _myenv - displays the current environment
@@ -20,7 +20,7 @@ int _myenv(info_t *info)
 * Return: the value
 */
 
-char *_getenv(info_t *info, const char *name);
+char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
 	char *p;
@@ -47,7 +47,7 @@ int _mysetenv(info_t *info)
 		_eputs( "The number are incorrect parameters\n");
 		return (1);
 	}
-	if (_setenv(info, info->argv[1], info->arg[2]))
+	if (_setenv(info, info->argv[1], info->argv[2]))
 		return (0);
 	return(1);
 }
@@ -78,7 +78,7 @@ int _myunsetenv(info_t *info)
 * Return: Always 0 (zero)
 */
  
-int populate_env_list(info_t, *info)
+int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;
 	size_t a;
