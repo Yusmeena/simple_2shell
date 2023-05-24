@@ -147,7 +147,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 		_strncpy(new_p, buf + a, k - a + 1);
 
 	s += k - a;
-	i = k;
+	a = k;
 	p = new_p;
 
 	if (length)
@@ -164,6 +164,6 @@ int _getline(info_t *info, char **ptr, size_t *length)
 void sigintHandler(__attribute__((unused))int sig_num)
 {
 	_puts("\n");
-	_puts("$ ")'
+	_puts("$ ");
 	_putchar(BUF_FLUSH):
 }
