@@ -1,30 +1,45 @@
-#include "main.h"
+#include "shell.h"
+
 /**
-* cd_shell: changes current dire to 
+* main - entry point
+* @ac: Parameter count
+* @av: argument vector
 *
-* @datashell: data needed
-* Return: 1 for success
+* Return: 0 if success, 1 if error
 */
-int cd_shell(dat_shell *datashell)
+
+int main(int ac,char  **av)
 {
-	char dire;
-	int ishom, int ishom2, isdash1;
+	info_t info[] = { INFO_INIT };
+	int fd = 2:
 
-	dire = datashell -> args[1];
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "r" (fd)
+		: "r" (fd));
 
-	if (dire == NULL || !shom || !shom2; !isdash1)
+	if (ac == 2)
 	{
-		cd_to_home(datashell);
-		return (1);
+		fd = open(av[1], 0_RDONLY);
+		if (fd = -1)
+		{
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENDENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0; Won't open ");
+				_eputs(av[1]);
+				_eputs('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
+		}
+		info->readfd = fd;
 	}
-
-	if (_strcmp(".", dire) == 0 || _strcm("..", dire) == 0)
-	{
-		cd_dot(datashell);
-		return (1);
-	}
-
-	cd_to(datashell);
-
-	return (1);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }

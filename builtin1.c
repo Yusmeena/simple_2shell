@@ -1,9 +1,10 @@
 #include "shell.h"
 
 /**
-* _myhistory = displays the history list, one command, preceede with line
-* numbers begins at 0
-*@info: structure containing potential arguments used to maintain function prototype
+* _myhistory = displays the history list, one command, before
+* with line numbers begins at 0
+* @info: structure entailing actual parameter 
+* used to maintain function prototype
 * Return: Always 0
 */
 int _myhistory(info_t *info)
@@ -13,11 +14,11 @@ int _myhistory(info_t *info)
 }
 
 /**
-*unset_alias -  sets alias to string
-*@info: parameter struct
-*@str: the string alias
+* unset_alias -  sets alias to string
+* @info: argument struct
+* @str: the string alias
 *
-*Return: Always 0 on success, 1 on error
+*Return: 1 on error while 0 if success
 */
 int unset_alias(info_t, *info, char *str)
 {
@@ -31,24 +32,24 @@ int unset_alias(info_t, *info, char *str)
 	*p = 0;
 	ret = delete_node_at_index(&(info->alias),
 			get_node_index(info->alias, node_starts_with(info->alias, str, -1)));
-	*p = c
+	*p = c;
 		return (ret);
 }
 /**
 *set_alias - sets alias to string
-*@info: parameter struct
+*@info: arguments struct
 *@str: string alias
 *
 * Return: Always 0 on success, 1 if error
 */
 int set_alias(info_t  *info, char *str)
 {
-	char *pp;
+	char *p;
 
-	pp = _strchr(str,'=');
-	if (!pp)
+	p = _strchr(str,'=');
+	if (!p)
 		return (1);
-	if (!*++pp)
+	if (!*++p)
 		return (unset_alias(info, str));
 
 	unset_alias(infor, str);
@@ -63,11 +64,11 @@ int set_alias(info_t  *info, char *str)
 */
 int print_alias(list_t *node)
 {
-	char **pp = NULL, *i = NULL;
+	char *p = NULL, *i = NULL;
 
 	if (node)
 	{
-		pp = _str(node->str, '=');
+		p = _str(node->str, '=');
 		for (i = node->str; i<= pp; i++)
 			_putchar(*i);
 		_putchar('\'');
@@ -78,9 +79,9 @@ int print_alias(list_t *node)
 	return (1);
 }
 /**
-* _myalias _ mimics the alias builtin (man alias)
-*@info: structure containinh potential arguments, used to maintain
-	constant function prototype.
+* _myalias _ copy the alias builtin (man alias)
+*@info: structure entailing parameter, used to maintain
+*	constant function prototype.
 * Return: Always 0
 */
 int _myalias(info_t *info)
