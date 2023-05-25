@@ -1,19 +1,19 @@
 #include "shell.h"
 
 /**
-*check_delim - this function checks if a charater 
-* enter matches any character
-*@c: pointer to the address of charcter to be check
-*@str: pointer to the address of the array of delimiters
+*check_delim - This function checks if a charater
+*entered by the user matches any character
+*@k: pointer to the address of charcter to be check
+*@stri: pointer to the address of the array of delimiters
 *Return: 1 if success, 0 if fail
 */
-unsigned int check_delim(char c, const char *str)
-{
+unsigned int check_delim(char k, const char *stri)
+
 	unsigned int i;
 
-	for (i = 0; str[i] != '\0'; i++}
+	for (i = 0; stri[i] != '\0'; i++)
 	{
-		if (c == str[i])
+		if (k == stri[i])
 			return (1);
 	}
 	return (0);
