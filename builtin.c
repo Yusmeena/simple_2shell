@@ -1,96 +1,53 @@
 #include "shell.h"
 
 /**
-*_myexits - this exits the shell
-* @info: structure entailing potential arguments.
-* used to maintain const function prototype
-* Return: exits with a given status
-* (0) if info.argv[0} != "exit"
+*sh_dir - Function to change a direcory
+*@line: command line
+*@k: command status
+*Return: 0 if success
 */
-int _myexit(info_t *info)
+int sh_dir(char **line, __attribute__((unused))int k)
 {
-	int exitcheck;
+	int count = -1;
+	char cwd[PATH_MAX];
 
-	if (info->argv[1]) /* if there is an exit argument */
-	{
-		exitcheck = _erratoi(info->argv[1]);
-		if (exitcheck == -1)
-		{
-			info->status = 2;
-			print_error(info, "this is illegal number: ");
-			_eputs(info->argv[1]);
-			_eputchar('\n');
-			return (1);
-		}
-		info->err_num = _erratoi(info->argv[1]);
-		return (-2);
-	}
-	info->err_num = -1;
-	return (-2);
-}
-
-/**
-* -mycd _ changes the current folder or directory of the process
-* @info: structure that entail argumnets used to maintain
-* const function prototype
-* Return: Always 0 (zero)
-*/
-int _mycd(info_t *info)
-{
-	char *s, *dir, buffer[1024];
-	int chdir_ret;
-
-	s = getcwd(buffer, 1024);
-	if (!s)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!info->argv[1])
-	{
-		dir = _getenv(info, "HOME");
-		if (!dir)
-			chdir_ret = /* TODO: what should this be? */
-				chdir((dir = _getenv(info, "PWD=")));
-		else
-			chdir_ret = chdir(dir);
-	}
-	else if (_strcmp(info->argv[1], "-") == 0)
-	{
-		if (!_getenv(info, "OLDPWD="))
-		{
-			_puts(s);
-			_putchar('\n');
-			return (1);
-		}
-		_puts(_getenv(info, "OLWPWD=")), _putchar('\n');
-		chdir_ret = /* Todo: what should this be ? */
-			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
-	}
+	if (line[1] == NULL)
+		count = chdir(getenv("HOME"));
+	else if (this_strcmp(line[1], "-") == 0)
+		count = chdir(getenv("OLDPWD"));
 	else
-		chdir_ret = chdir(info->argv[1]);
-	if (chdir_ret == -1)
+		count = chdir(line[1]);
+
+	if (count == -1)
 	{
-		print_error(info, "won't cd to ");
-		_eputs(info->argv[1]), _eputchar('\n');
+		perror("hsh");
+		return (-1);
 	}
-	else
+	else if (count != -1)
 	{
-		_setenv(info, "OLDPWD", _getenv(info, "PWD="));
-		_setenv(info, "PWD", getcwd(buffer, 1024));
+		getcwd(cwd, sizeof(cwd));
+		setenv("OLDPWD", getenv("PWD"), 1);
+		setenv("PWD", cwd, 1);
 	}
 	return (0);
 }
 /**
-* _myhelp - change the current folder or directory of the process
-* @info: Stucture entailing the potential arguments. Used to miantain or
-* or check constant function of prototype.
-* Return: Always 0 or zero
+*display_env - Function to display env
+*@line: Line command
+*@c: command status
+*Return: Always 0 (zero)
 */
-int _myhelp(info_t *info)
+int display_env(__attribute__((unused)) char **line,
+		 __attribute__((unused)) int c)
 {
-	char **arg_array;
+	int value;
+	size_t i;
 
-	arg_array = info->argv;
-	_putchar("Please call work. The function has not be executed \n");
-	if (0)
-		_puts(*arg_array); /* temp att_unused work */
+	for (i = 0; environ[i] != NULL; i++)
+	{
+		value = this_strlen(environ[i]);
+		write(1, environ[i], value);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	return (0);
 }
