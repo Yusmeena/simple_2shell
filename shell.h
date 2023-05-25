@@ -23,7 +23,7 @@ extern char **environ;
 /* This is for error message */
 void see_err(char *line, int exe, char **argv);
 void this_perror(char **argv, int stri, char **line);
-void this_error(char **argv, int str);
+void this_error(char **argv, int stri);
 
 /* builtin */
 /*
@@ -79,7 +79,7 @@ void *_realloc(void *, unsigned int, unsigned int);
 
 /* toem_memory.c */
 void free_me(char **insert, char *exe);
-void *my_realloc(void *point, unsigned int old_size, unsigned int new_size);
+void *A_realloc(void *point, unsigned int old_size, unsigned int new_size);
 char *this_memcpy(char *tmp, char *input, unsigned int numb);
 void *mem_array(void *prt, int numb, unsigned int exe);
 void *this_calloc(unsigned int val);

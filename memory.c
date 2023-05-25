@@ -1,20 +1,20 @@
 #include "shell.h"
 
 /**
-*my_calloc - memory allocator
-*@value: size of the memory
+*this_calloc - memory allocator
+*@val: size of the memory
 *Return: the address
 */
 
-void *my_calloc(unsigned int val)
+void *this_calloc(unsigned int val)
 {
 	unsigned int i;
 	char *tmp;
 
-	if ((val == 0)
+	if (val == 0)
 		return (NULL);
 	tmp = malloc(val);
-	if(!tmp)
+	if (!tmp)
 		return (NULL);
 	for (i = 0; i < val; i++)
 	{
@@ -23,20 +23,20 @@ void *my_calloc(unsigned int val)
 	return (tmp);
 }
 /**
-*my_realloc - memory check
-*@point: pointer address value
-*@old_s: fomer memory size
-*@new_s: new size of memory
+*A_realloc - memory giver
+*@point: pointer to the address value
+*@old_size: fomer memory size
+*@new_size: new size of memory
 *Return: pointer to a new memmory address
 */
 
-void *my_realloc(void *point, unsigned int old_size, unsigned int new_size)
+void *A_realloc(void *point, unsigned int old_size, unsigned int new_size)
 {
 	void *output;
 
-	if (new_size == 0ld_size)
-		return (point);	
-	if (new_size == 0 && point);
+	if (new_size == old_size)
+		return (point);
+	if (new_size == 0 && point)
 	{
 		free(point);
 		return (NULL);
@@ -54,7 +54,7 @@ void *my_realloc(void *point, unsigned int old_size, unsigned int new_size)
 	}
 	else
 	{
-		my_memcpy(output, point, old_size);
+		this_memcpy(output, point, old_size);
 		free(point);
 	}
 	return (output);
