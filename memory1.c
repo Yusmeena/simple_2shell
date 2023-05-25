@@ -1,31 +1,31 @@
 #include "shell.h"
 /**
 *free_memory - function that free memory
-*@input: pointer to the address of command
-*@run: pointer to the linde addresss
+*@insert: pointer to the address of command
+*@exe: pointer to the line addresss
 */
-void free_me(char **input, char *run)
+void free_memory(char **insert, char *exe)
 {
-	free(input)
-	free(run)
-	input - NULL;
-	run = NULL;
+	free(insert);
+	free(exe)
+	insert = NULL;
+	exe = NULL;
 }
 
 /**
 *mem_array - this function filled the array
 *@prt: the pointer to memory
-*@number: integer
-*@run: val of integer
-*@Return: filled the array
+*@numb: integer
+*@exe: val of integer
+*Return: filled the array
 */
-void *mem_array(void *prt, int numb, unsigned int run
+void *mem_array(void *prt, int numb, unsigned int exe)
 {
 
 	unsigned int i = 0;
 	char *j = prt;
 
-	while (a < run)
+	while (a < exe)
 	{
 		*j = numb;
 		j++;
@@ -35,20 +35,20 @@ void *mem_array(void *prt, int numb, unsigned int run
 }
 
 /**
-*my_mem_cpy - this function to mmemory byte
-*@tmp: pointer to descri
-*@input: pointer to the address
-*@num: the size of byte to copy
-*@Return: pointer to descri
+*this_memcpy - this function to mmemory byte
+*@tmp: pointer to address
+*@insert: pointer to the address
+*@numb: the size of byte to copy
+*Return: pointer to address
 */
 
-char *my_memcpy(char *tmp, char *input, unsigned int numb)
+char *this_memcpy(char *tmp, char *insert, unsigned int numb)
 {
-	unsigned int a;
+	unsigned int i;
 
 	for (i = 0; i < numb; i++)
 	{
-		tmp[i] = input[i];
+		tmp[i] = insert[i];
 	}
 	return (tmp)
 }

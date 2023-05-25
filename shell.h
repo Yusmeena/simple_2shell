@@ -78,7 +78,7 @@ void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
 /* toem_memory.c */
-void free_me(char **insert, char *exe);
+void free_memory(char **insert, char *exe);
 void *A_realloc(void *point, unsigned int old_size, unsigned int new_size);
 char *this_memcpy(char *tmp, char *input, unsigned int numb);
 void *mem_array(void *prt, int numb, unsigned int exe);
