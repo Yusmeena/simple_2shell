@@ -6,17 +6,17 @@
 *Return: the address
 */
 
-void *my_calloc(unsigned int value)
+void *my_calloc(unsigned int val)
 {
 	unsigned int i;
 	char *tmp;
 
-	if ((value == 0)
+	if ((val == 0)
 		return (NULL);
-	tmp = malloc(value);
+	tmp = malloc(val);
 	if(!tmp)
 		return (NULL);
-	for (i = 0; i < value; i++)
+	for (i = 0; i < val; i++)
 	{
 		tmp[i] = '\0';
 	}
@@ -49,7 +49,7 @@ void *my_realloc(void *point, unsigned int old_size, unsigned int new_size)
 	}
 	if (!point)
 	{
-		mem_arr(output, '\0', new_size);
+		mem_array(output, '\0', new_size);
 		free(point);
 	}
 	else
