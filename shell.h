@@ -129,6 +129,7 @@ void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
+void mdis_error(char *line, int run, char **argv);
 
 /* toem_string.c */
 int _strlen(char *);
@@ -150,6 +151,9 @@ char *_strchr(char *, char);
 /* toem_tokenizer.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
+
+/* check_delim */
+unsigned int check_delim(char c, const char *str);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
