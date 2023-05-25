@@ -1,18 +1,18 @@
 #include "shell.h"
 
 /**
-*dis_err - function ro display error message
-*@line: pointer te commaand adrress
-*@run: iterate the shell
-*@argv: Argument of shell
+*see_error - Function to display error message
+*@line: pointer to comaand adrress
+*@exe: iterate the shell
+*@argv: vector argumnet
 */
-void dis_error(char *line, int run, char **argv)
+void see_error(char *line, int exe, char **argv)
 {
 	char *error_msg;
 
 	PRINTF(argv[0]);
 	PRINTF(": ");
-	error_msg = my_itoa(run);
+	error_msg = this_itoa(exe);
 	PRINTF(error_msg);
 	free(error_msg);
 	PRINTF(": ");
