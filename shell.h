@@ -162,6 +162,10 @@ void *my_realloc(void *point, unsigned int old_size, unsigned int new_size);
 char *my_memcpy(char *tmp, char *input, unsigned int numb);
 void *mem_array(void *prt, int numb, unsigned int run);
 void *my_calloc(unsigned int val);
+
+void env_mem_free(char **input);
+void make_env(char **line);
+
 /* toem_atoi.c */
 int interactive(info_t *);
 int is_delim(char, char *);
