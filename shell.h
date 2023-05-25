@@ -90,13 +90,24 @@ void make_env(char **line);
 
 /* my character functions */
 int this_strlen(char *str);
-int _put char(char c);
+int _putchar(char c);
 char *this_strncpy(char *dst, char *sc, int int l);
 void this_puts(char *stri);
 int this_atoi(char *sf);
 char *this_strtok(char *st, const char *tk);
 unsigned int check_delim(char k, const char *sf);
 
+int this_intlen(int l);
+void this_arr_rev(char *ar, int b);
+char *this_itoa(unsigned int numb);
+int this_isalpha(int c);
+int this_strcmp(char *stri1, char *stri2);
+char *this_strcpy(char *buf, char *scr);
+int *this_strcat(char *destin, char *srn);
+int this_strncmp(const char *stri1, const char *stri2, size_t num1);
+int *this_strdup(char *sf);
+char *this_strchr(char *stri);
+char *this_strchr(chat *stri, char c);
 /**
 *struct this_shell - sturcture for builtin cmd
 *@cmd: Pointer to command address
