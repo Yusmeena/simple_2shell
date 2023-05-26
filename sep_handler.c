@@ -5,7 +5,7 @@
 *@cmd: command to execute
 *Return: all commands
 */
-char **sep_handler(char cmd)
+char **sep_handler(char *cmd)
 {
 	char **inserts;
 	char *insert;

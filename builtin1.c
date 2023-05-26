@@ -45,7 +45,8 @@ int echoit_history(__attribute__((unused))char **exe,
 		__attribute__((unused))int sh)
 {
 	FILE *v1;
-	char *s, *insert = NULL;
+	char *c, *insert = NULL;
+	char *fname = ".display_history";
 	size_t buf = 0;
 	int val = 0;
 

@@ -10,7 +10,7 @@ int this_strlen(char *stri)
 
 	int i;
 
-	for (i = 0; stri[a] != '\0'; i++)
+	for (i = 0; stri[i] != '\0'; i++)
 	{
 		continue;
 	}

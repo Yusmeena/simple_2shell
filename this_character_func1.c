@@ -15,7 +15,7 @@ int this_intlen(int l)
 		countit++;
 		l /= 10;
 	}
-	return (counit);
+	return (countit);
 }
 /**
 *this_arr_rev - function that reverse a string

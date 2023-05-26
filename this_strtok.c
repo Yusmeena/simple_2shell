@@ -7,7 +7,7 @@
 *Return: pointer ro the address of next token or NULL if none
 */
 
-char *this_strtok(char *sf, constant *tk)
+char *this_strtok(char *sf, const *tk)
 {
 	static char *o, *c;
 	unsigned int i;
@@ -19,11 +19,23 @@ char *this_strtok(char *sf, constant *tk)
 		return (NULL);
 	for (i = 0; c[i] != '\0'; i++)
 	{
+		if (check_delim(c[i], tk) == 0)
+			break;
+	}
+	if (c[i] == '\0' || c[i] == '#')
+	{
+		c = NULL;
+		return (NULL);
+	}
+	o = c + i;
+	c = o;
+	for (i = 0; c[i] != '\0'; i++)
+	{
 		if (check_delim(c[i], tk) == 1)
 			break;
 	}
 	if (c[i] == '\0')
-		c = NULL;
+		c =NULL;
 	else
 	{
 		c[i] = '\0';

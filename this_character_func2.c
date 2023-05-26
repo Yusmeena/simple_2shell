@@ -34,7 +34,7 @@ char *this_strcat(char *destin, char *src)
 	{
 		destin++;
 	}
-	while (*scr != '\0')
+	while (*src != '\0')
 	{
 		*destin = *scr;
 		destin++;
