@@ -32,7 +32,7 @@ void this_error(char **argv, int stri);
  *@func: the function
  */
 int builtin_value(char **line);
-int pro_builtin(char **line, int int k);
+int pro_builtin(char **line, int k);
 int ch_dir(char **line, __attribute__((unused))int K);
 
 /**
@@ -41,7 +41,7 @@ int ch_dir(char **line, __attribute__((unused))int K);
 *@k: line status
 *Return:Always 0;
 */
-int display_env(__attributr__((unused)) char **line,
+int display_env(__attribute__((unused)) char **line,
 			__attribute__((unused)) int k);
 int echoit_handler(char **line, int k);
 void this_exit(char **line, char *exe, char **argv, int l, int c);
@@ -85,7 +85,7 @@ void make_env(char **line);
 /* my character functions */
 int this_strlen(char *str);
 int _putchar(char c);
-char *this_strncpy(char *dst, char *sc, int int l);
+char *this_strncpy(char *dst, char *sc, int l);
 void this_puts(char *stri);
 int this_atoi(char *sf);
 char *this_strtok(char *st, const char *tk);
@@ -101,7 +101,7 @@ int *this_strcat(char *destin, char *srn);
 int this_strncmp(const char *stri1, const char *stri2, size_t num1);
 int *this_strdup(char *sf);
 char *this_strchr(char *stri);
-char *this_strchr(chat *stri, char c);
+char *this_strchr(char *stri, char c);
 /**
 * struct this_shell - sturcture for builtin cmd
 *@exe: to execute line
@@ -117,7 +117,7 @@ typedef struct this_shell
 } builtincmd;
 
 /* display */
-void see_int(numb);
+void see_int(int numb);
 void see_numb(unsigned int numb);
 int see_echo(char **line);
 
