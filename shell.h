@@ -100,7 +100,6 @@ char *this_strcpy(char *buf, char *scr);
 int *this_strcat(char *destin, char *srn);
 int this_strncmp(const char *stri1, const char *stri2, size_t num1);
 int *this_strdup(char *sf);
-char *this_strchr(char *stri);
 char *this_strchr(char *stri, char c);
 /**
 * struct this_shell - sturcture for builtin cmd
