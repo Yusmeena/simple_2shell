@@ -1,169 +1,72 @@
 #include "shell.h"
 
 /**
-* input_buf - buffer chain commands
-* @info: parameter struct
-* @buf: address of bufffer
-* @leng: leng of the var address
-*
-* Return: byte read
+*this_getline - this function reads what the user enter
+*Return: the insert by user on a buffer
 */
-ssize_t input_buf(info_t *info, char **buf, size_t *len)
-{
-	ssize_t r = 0;
-	ssize_t len_pp = 0;
 
-	if (! * len) /* if nothing remain in the buffer, fill it */
+char *this_getline()
+{
+	int tmp, tmp1, buffsiz = BUF_SIZ;
+	char c = 0, *buffer, *buff;
+
+	buffer = malloc(buffsiz);
+	if (!buffer)
 	{
-		/*bfree((void **)info->cmd_buf);*/
-		free(*buf);
-		*buf = NULL;
-		signal(SIGNINT, signintHandler);
-	#if USE_GETLINE
-		r = getline(buf, &len_pp, stdin);
-	#else
-		r = _getline(info, buf, &len_pp)
-	#endif
-			if (r > 0)
+		free(buffer);
+		return (NULL);
+	}
+	for (tmp = 0; s != EOF && c != '\n'; tmp++)
+	{
+		fflush(stdin);
+		tmp1 = read(STDIN_FILENO, &c, 1);
+		if (tmp1 == 0)
+		{
+			free(buffer);
+			exit(EXIT_SUCCESS);
+		}
+		buffer[tmp] = c;
+		if (buffer[0] == '\n')
+			return (this_ent(buffer));
+		if (tmp >= buffsiz)
+		{
+			buffer = realloc(buffer, (buffsiz + 2));
+			if (!buffer)
 			{
-				if ((*buf)[r - 1] == '\n')
-				{
-					(*buf)[r - 1] = '\0';
-					r--;
-				}
-				info->linecount_flag = 1;
-				remove_comments(*buf);
-				build_history_list(info, *buf, info->histcount++);
-				/*if (_strchr(*buf; ';')) is ti a commmand chain? */
-				{
-				*len = r;
-				info->cmd_buf = buf;
-				}
+				free(buffer);
+				return (NULL);
 			}
 		}
-		return (r);
 	}
+	buffer[tmp] = '\0';
+	buf = this_space(buffer);
+	free(bufffer);
+	this_hash(buf);
+	return (buf);
+}
 
 /**
-*get_input - gets a line minus the new line
-*@info: parameter struct
-*
-* Return: bytes read
+*create_env - this function creates environment variables
+*@line: Array of string to store
 */
-ssize_t get_input(info_t *info)
+void create_env(char **line)
 {
-	static char *buf; /* the ';; command chain buffer h */
-	static size_t a, b,  lenn;
-	ssize_t r = 0;
-	char **buf_p = &(info->arg)' *p;
+	int i;
 
-	_putchar(BUF_FLUSH);
-	r = input_buf(info, &buf, &lenn);
-	if (r == -1) 
-		return (-1);
-	if (lenn) /* we have command left in the buffer chain*/
+	for (i = 0; environ[i]; i++)
+		line[i] = this_strdup(environ[i]);
+	line[i] = NULL;
+}
+/**
+*env_mem_free - this free environ memory array
+*@insert: Array of environ variables
+*/
+void env_mem_free(char *insert)
+{
+	int i;
+
+	for (i = 0; insert[i]; i++)
 	{
-		b = a; /*initial new iterator to current buf index */
-		p = buf + a; /* get pointer for return*/
-
-		check_chain(info, buf, &b, a, lenn);
-		while (b < len) /* iterate to semicolon or end */
-		{
-			if (is_chain(info, buf, &b))
-				break;
-			b++;
-		}
-
-		a = b + 1; /* increment pass nulled ';' */
-		if (a >= lenn) /* reached the end of buffer? */
-		{
-			a = len = 0; /* reset the index and length */
-			info->cmd_buf_type  = CMD_NORM;
-		}
-
-		*buf_p = p; /* pass back pointer to current comand index */
-		return (_strlen(p)); /* return the length of the current command */
+		free(insert[i]);
 	}
-
-	*buf_p = buf; /* else not a chain, pass back buffer frm _getline() */
-	return (r); /* return length of buffer from getline() */
-}
-
-/**
-* read_buf - reads a buffer
-* @info: parameter struct
-* @buf: buffer
-* @a: size
-*
-* Return: r
-*/
-ssize_t read_buf(info_t *info, char *buf, size_t *a)
-{
-	ssize_t r = 0;
-
-	if (*a)
-		return (0);
-	r = read(info->readfd, buf, READ_BUF_SIZE);
-	if (r >= 0)
-		*a = r;
-	return (r);
-}
-
-/**
-*_getline - gets the line of input from STDIN
-* @info: parameter struct
-* @prt: address of pointer buffer, preallocated or NULL
-*@length: size of preallocted ptr buffer if NULL
-*
-* Return: s
-*/
-int _getline(info_t *info, char **ptr, size_t *length)
-{
-	static char buf[READ_BUF_SIZE];
-	static size_t a, len;
-	size_t k;
-	ssize_t r = 0, s = 0;
-	char *p = NULL, *new_p = NULL, *c;
-
-	p = *ptr;
-	if (p && length)
-		s = *length;
-	if (a == len)
-		a = len = 0;
-
-	r = read_buf(info, buf, &len);
-	if (r == -1 || (r == 0 && len == 0))
-		return (-1);
-
-	c = _strchr(buf + a, 'n');
-	k = c ? 1 + (unsigned int)(c - buf) : len;
-	new_p = _realloc(p, s, s ? s + k : k + 1);
-	if (!new_p) /* MALLOC FAILURE! */
-		return (p ? free(p), -1 : -1);
-
-	if (s)
-		_strncat(new_p, buf + a, k - a);
-	else
-		_strncpy(new_p, buf + a, k - a + 1);
-
-	s += k - a;
-	a = k;
-	p = new_p;
-
-	if (length)
-		*length = s;
-	*ptr = p;
-	return (s);
-}
-/**
-* sigintHandler - block ctrl-C
-* @sig_num: the signal number
-*
-* Return: void
-*/
-void sigintHandler(__attribute__((unused))int sig_num)
-{
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH):
 }
