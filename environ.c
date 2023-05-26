@@ -9,7 +9,7 @@
 int _myenv(info_t *info)
 {
 	print_list_str(info->env);
-	return(0);
+	return (0);
 }
 /**
 * _getenv - collect the value of an enviornment variable
@@ -36,7 +36,7 @@ char *_getenv(info_t *info, const char *name)
 }
 /**
 * _mysetenv - create a new environ variable or change an exit one
-* @info: structure entainin actual parameters. 
+* @info: structure entainin actual parameters.
 * Used to maintaing constant function prototype
 * Return: Always 0 or zero
 */
@@ -44,12 +44,12 @@ int _mysetenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_eputs( "The number are incorrect parameters\n");
+		_eputs("The number are incorrect parameters\n");
 		return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
 		return (0);
-	return(1);
+	return (1);
 }
 /**
 * _myunsetenv - Remove or delete an environ variable
@@ -73,11 +73,11 @@ int _myunsetenv(info_t *info)
 }
 /**
 * populate_env_list - populate env linked list
-* @info: the structure entails actal parameters. 
+* @info: the structure entails actal parameters.
 * used constant function prototype
 * Return: Always 0 (zero)
 */
- 
+
 int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;

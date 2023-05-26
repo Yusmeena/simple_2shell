@@ -1,4 +1,4 @@
-#inlude "shell.h"
+#include "shell.h"
 
 /**
 *main - this shell main function
@@ -7,7 +7,7 @@
 *Return:  return the command
 */
 
-int mainshell(__attribute__((unused)) int argc, char **argv)
+int main(__attribute__((unused)) int argc, char **argv)
 {
 	char *exe, **line, **parse;
 	int val = 0, i, k = 1, l = 0;

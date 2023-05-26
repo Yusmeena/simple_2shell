@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <linux/limits.h>
-#include <fcnt1.h>
+/*#include <fcnt1.h>*/
 #include <errno.h>
 #include <signal.h>
 
@@ -36,20 +36,20 @@ int pro_builtin(char **line, int int k);
 int ch_dir(char **line, __attribute__((unused))int K);
 
 /**
-*print_env - Funtion to display env
+*display_env - Funtion to display env
 *@line: pointer to mommand
 *@k: line status
 *Return:Always 0;
 */
 int display_env(__attributr__((unused)) char **line,
-			__attribute__((unused)) int c);
+			__attribute__((unused)) int k);
 int echoit_handler(char **line, int k);
 void this_exit(char **line, char *exe, char **argv, int l, int c);
 
 /**
-*echo_history - Funtion to echo his
+*echoit_history - Funtion to echo his
 * @exe: commmand line
-* @ch: command, status
+* @sh: command, status
 * Return: 0 always
 */
 int echoit_history(__attribute__((unused))char **exe,
@@ -61,12 +61,6 @@ int see_history(char *line);
 void file_looker(char *v, char **argv);
 void exe_file(char *cmd, int k, FILE *v1, char **argv);
 void exit_file(char **cmd, char *insert, FILE *v1);
-
-typedef struct builtin
-{
-	char *type;
-	int (*func)(info_t *);
-} builtin_table;
 
 
 /* check_delim */
@@ -109,7 +103,8 @@ int *this_strdup(char *sf);
 char *this_strchr(char *stri);
 char *this_strchr(chat *stri, char c);
 /**
-*struct this_shell - sturcture for builtin cmd
+* struct this_shell - sturcture for builtin cmd
+*@exe: to execute line
 *@cmd: Pointer to command address
 *@func: Pinter to function address
 */
@@ -118,7 +113,7 @@ typedef struct this_shell
 {
 
 	char *cmd;
-	int (*fun)(char **exe, int k);
+	int (*func)(char **exe, int k);
 } builtincmd;
 
 /* display */

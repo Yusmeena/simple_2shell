@@ -22,7 +22,7 @@ char *this_strcpy(char *buf, char *scr)
 
 /**
 *this_strcat - this function that join two strings
-*@desin: this is the address of string 1
+*@destin: this is the address of string 1
 *@src: pointer to address of string 2
 *Return: address of string
 */
@@ -44,8 +44,8 @@ char *this_strcat(char *destin, char *src)
 	return (tc);
 }
 /**
-* see_numb - print integers using _putchar function
-*numb: unsinged integer
+*see_numb - print integers using _putchar function
+*@numb: unsinged integer
 */
 
 void see_numb(unsigned int numb)
