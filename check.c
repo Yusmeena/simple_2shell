@@ -35,11 +35,11 @@ int builtin_value(char **line)
 *Return: 0 if success, otherwise 1 if fail
 */
 
-int pro_buitin(char **line, int k)
+int pro_builtin(char **line, int k)
 {
 	builtincmd exe_builtin[] = {
 		{"cd", ch_dir},
-		{"env",display},
+		{"env", display},
 		{"echo", echoit_handler},
 		{"history", echoit_history},
 		{NULL, NUL}
