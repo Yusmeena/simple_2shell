@@ -127,7 +127,7 @@ void see_numb(unsigned int numb);
 int see_echo(char **line);
 
 /* Pathway finder */
-char *doit_cmd(char *insert, char *total);
+char *doit_cmd(char *insert, char *sum);
 char *this_getenv(char *env);
 int look_path(char **command);
 char *this_getline();
