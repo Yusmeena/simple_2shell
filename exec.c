@@ -30,7 +30,7 @@ int exec_cmd(char **insert, char *exe, int c, char **argv)
 		if (access(insert[0], R_OK) != 0)
 		{
 			see_err(insert[0], c, argv);
-			free_me(insert, exe);
+			free_memory(insert, exe);
 			exit(127);
 		}
 		if (execve(*insert, insert, environ) == -1)

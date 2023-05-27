@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 	char *exe, **line, **parse;
 	int val = 0, i, k = 1, l = 0;
 
-	if (arg[1])
+	if (argv[1])
 		file_looker(argv[1], argv);
 	signal(SIGINT, handleit_signal);
 	while (k)

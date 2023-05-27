@@ -9,7 +9,7 @@
 char **exe_cmd(char *line)
 {
 	char **inserts, *insert;
-	int i, buf = BUF_SIZ;
+	int i, buf = BUF_SIZE;
 
 	if (line[0] == ' ' && line[this_strlen(line)] == ' ')
 		exit(0);

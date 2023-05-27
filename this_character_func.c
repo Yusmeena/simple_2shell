@@ -26,31 +26,31 @@ int this_strlen(char *stri)
 */
 int _putchar(char c)
 {
-	return (writes(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 /**
 *this_strncpy - a function that copy a string
-*@dst: pointer to the second string
+*@destin: pointer to the second string
 *@l: int
 *@sc: address tp the second string
 *Return: string hat it copied
 */
-char *this_strncpy(char *dst, *sc, int l)
+char *this_strncpy(char *destin, char *sc, int l)
 {
 	int i = 0;
 
 	while (i < l && *(sc + i))
 	{
-		(*dst + i) = *(sc + i);
+		*(destin + i) = *(sc + i);
 		i++;
 	}
 	while (i < l)
 	{
-		*(dst + i) = '\0';
+		*(destin + i) = '\0';
 		i++;
 	}
-	return (dst);
+	return (destin);
 }
 
 /**

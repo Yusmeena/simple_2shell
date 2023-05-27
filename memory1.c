@@ -7,7 +7,7 @@
 void free_memory(char **insert, char *exe)
 {
 	free(insert);
-	free(exe)
+	free(exe);
 	insert = NULL;
 	exe = NULL;
 }
@@ -25,7 +25,7 @@ void *mem_array(void *prt, int numb, unsigned int exe)
 	unsigned int i = 0;
 	char *j = prt;
 
-	while (a < exe)
+	while (i < exe)
 	{
 		*j = numb;
 		j++;
@@ -50,5 +50,5 @@ char *this_memcpy(char *tmp, char *insert, unsigned int numb)
 	{
 		tmp[i] = insert[i];
 	}
-	return (tmp)
+	return (tmp);
 }

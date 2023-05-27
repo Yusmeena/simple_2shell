@@ -42,7 +42,7 @@ int pro_builtin(char **line, int k)
 		{"env", display_env},
 		{"echo", echoit_handler},
 		{"history", echoit_history},
-		{NULL, NUL}
+		{NULL, NULL}
 	};
 	int i = 0;
 

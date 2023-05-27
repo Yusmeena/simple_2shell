@@ -7,7 +7,7 @@
 
 char *this_getline()
 {
-	int tmp, tmp1, buffsiz = BUF_SIZ;
+	int tmp, tmp1, buffsiz = BUF_SIZE;
 	char c = 0, *buffer, *buff;
 
 	buffer = malloc(buffsiz);
@@ -16,7 +16,7 @@ char *this_getline()
 		free(buffer);
 		return (NULL);
 	}
-	for (tmp = 0; s != EOF && c != '\n'; tmp++)
+	for (tmp = 0; c != EOF && c != '\n'; tmp++)
 	{
 		fflush(stdin);
 		tmp1 = read(STDIN_FILENO, &c, 1);
@@ -39,10 +39,10 @@ char *this_getline()
 		}
 	}
 	buffer[tmp] = '\0';
-	buf = this_space(buffer);
-	free(bufffer);
-	this_hash(buf);
-	return (buf);
+	buff = this_space(buffer);
+	free(buffer);
+	this_hash(buff);
+	return (buff);
 }
 
 /**
@@ -61,7 +61,7 @@ void create_env(char **line)
 *env_mem_free - this free environ memory array
 *@insert: Array of environ variables
 */
-void env_mem_free(char *insert)
+void env_mem_free(char **insert)
 {
 	int i;
 

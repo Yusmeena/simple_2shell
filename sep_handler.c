@@ -10,7 +10,7 @@ char **sep_handler(char *cmd)
 	char **inserts;
 	char *insert;
 	int i;
-	int buff = BUF_SIZ;
+	int buff = BUF_SIZE;
 
 	if (cmd[0] == ' ' && cmd[this_strlen(cmd)] == ' ')
 		exit(0);
@@ -59,3 +59,4 @@ int see_history(char *line)
 			return (-1);
 	}
 	return (1);
+}

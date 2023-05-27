@@ -8,7 +8,7 @@
 char *this_ent(char *stri)
 {
 
-	free(sri);
+	free(stri);
 	return ("\0");
 }
 /**
@@ -18,7 +18,7 @@ char *this_ent(char *stri)
 *Return: Returns the edited string
 */
 
-char *this_space(char *stri)
+char *this_space(char *sf)
 {
 	int i, j = 0;
 	char *tmp;

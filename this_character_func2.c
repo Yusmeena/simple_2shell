@@ -36,11 +36,11 @@ char *this_strcat(char *destin, char *src)
 	}
 	while (*src != '\0')
 	{
-		*destin = *scr;
+		*destin = *src;
 		destin++;
-		scr++;
+		src++;
 	}
-	*dest = '\0';
+	*destin = '\0';
 	return (tc);
 }
 /**

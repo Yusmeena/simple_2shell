@@ -7,7 +7,7 @@
 *Return: pointer ro the address of next token or NULL if none
 */
 
-char *this_strtok(char *sf, const *tk)
+char *this_strtok(char *sf, const char *tk)
 {
 	static char *o, *c;
 	unsigned int i;

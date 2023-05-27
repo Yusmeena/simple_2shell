@@ -18,21 +18,21 @@ int this_intlen(int l)
 	return (countit);
 }
 /**
-*this_arr_rev - function that reverse a string
+*this_array_rev - function that reverse a string
 *@arc: the address of astring
 *@b: length of the array
 */
 
-void this_arr_rev(char *arc, int b)
+void this_array_rev(char *ar, int b)
 {
 	char buf;
 		int i;
 
 	for (i = 0; i < (b / 2); i++)
 	{
-		buf = arc[i];
-		arc[a] = arc[(b - 1) - i];
-		arc[(b - 1) - i] = buf;
+		buf = ar[i];
+		ar[i] = ar[(b - 1) - i];
+		ar[(b - 1) - i] = buf;
 	}
 }
 /**
@@ -44,10 +44,10 @@ char *this_itoa(unsigned int num1)
 {
 	int countit = 0;
 	int i = 0;
-	char *str;
+	char *stri;
 
 	countit = this_intlen(num1);
-	str = malloc(countit + 2);
+	stri = malloc(countit + 2);
 	if (stri == NULL)
 		return (NULL);
 	*stri = '\0';
@@ -58,8 +58,8 @@ char *this_itoa(unsigned int num1)
 		i++;
 	}
 	stri[i] = (num1 % 10) + '0';
-	this_arr_rev(stri, countit);
-	str[i + 1] = '\0';
+	this_array_rev(stri, countit);
+	stri[i + 1] = '\0';
 	return (stri);
 }
 
@@ -91,12 +91,16 @@ int this_strcmp(char *stri1, char *stri2)
 	int i, countit1, countit2, tmp = 0;
 
 	countit1 = this_strlen(stri1);
-	countit1 = this_strlen(stri2);
+	countit2 = this_strlen(stri2);
 
 	if (stri1 == NULL || stri2 == NULL)
+	{
 		return (1);
+	}
 	if (countit1 != countit2)
+	{
 		return (1);
+	}
 	for (i = 0; stri1[i]; i++)
 	{
 		if (stri1[i] != stri2[i])
@@ -105,6 +109,9 @@ int this_strcmp(char *stri1, char *stri2)
 			break;
 		}
 		else
+		{
 			continue;
-	}
-	return (tmp);
+		}
+	}	
+		return (tmp);
+}

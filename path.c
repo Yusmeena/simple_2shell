@@ -9,7 +9,7 @@
 int look_path(char **command)
 {
 	char *look_p;
-	char *sum, cmd;
+	char *sum, *cmd;
 	struct stat buf;
 
 

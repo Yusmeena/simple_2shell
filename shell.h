@@ -9,7 +9,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <linux/limits.h>
-/*#include <fcnt1.h>*/
+#include <fcntl.h>
 #include <errno.h>
 #include <signal.h>
 
@@ -62,9 +62,6 @@ void file_looker(char *v, char **argv);
 void exe_file(char *cmd, int k, FILE *v1, char **argv);
 void exit_file(char **cmd, char *insert, FILE *v1);
 
-
-/* check_delim */
-unsigned int check_delim(char c, const char *str);
 
 /* toem_memory.c */
 void free_memory(char **insert, char *exe);
@@ -122,9 +119,9 @@ int look_path(char **command);
 char *this_getline();
 
 /* Command function */
-int run_cmd(char  *insert, char *exe, int c, char **argv);
+int run_cmd(char  **insert, char *exe, int c, char **argv);
 void handleit_signal(int look);
-char show(void);
+void show(void);
 char **sep_handler(char *cmd);
 char **exe_cmd(char *line);
 

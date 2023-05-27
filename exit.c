@@ -18,9 +18,9 @@ void this_exit(char **line, char *exe, char **argv, int l, int c)
 		free(line);
 		exit(c);
 	}
-	while (line[1][a])
+	while (line[1][i])
 	{
-		if (ths_isalpha(line[1][a++]) != 0)
+		if (this_isalpha(line[1][i++]) != 0)
 		{
 			this_perror(argv, l, line);
 			free(exe);

@@ -10,7 +10,7 @@ char *this_getenv(char *env)
 {
 
 	size_t env_leng, sum_leng;
-	char *sum:
+	char *sum;
 	int i, j, k;
 
 	env_leng = this_strlen(env);
