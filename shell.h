@@ -33,8 +33,8 @@ void this_error(char **argv, int stri);
  */
 int builtin_value(char **line);
 int pro_builtin(char **line, int k);
-/*int sh_dir(char **line, __attribute__((unused))int K);*/
-int sh_dir(char *line);
+int sh_dir(char **line, __attribute__((unused))int K);
+/*int sh_dir(char *line);*/
 /**
 *display_env - Funtion to display env
 *@line: pointer to command
