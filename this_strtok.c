@@ -35,7 +35,7 @@ char *this_strtok(char *sf, const char *tk)
 			break;
 	}
 	if (c[i] == '\0')
-		c =NULL;
+		c = NULL;
 	else
 	{
 		c[i] = '\0';

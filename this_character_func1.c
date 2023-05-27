@@ -19,7 +19,7 @@ int this_intlen(int l)
 }
 /**
 *this_array_rev - function that reverse a string
-*@arc: the address of astring
+*@ar: the address of astring
 *@b: length of the array
 */
 
@@ -112,6 +112,6 @@ int this_strcmp(char *stri1, char *stri2)
 		{
 			continue;
 		}
-	}	
+	}
 		return (tmp);
 }

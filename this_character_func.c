@@ -70,7 +70,7 @@ void this_puts(char *stri)
 	_putchar('\n');
 }
 
-/***
+/**
 *this_atoi - function that covert string to integer
 *@str: address to a string
 *Return: the integer value

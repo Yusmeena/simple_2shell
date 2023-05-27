@@ -14,7 +14,7 @@ char *this_ent(char *stri)
 /**
 *this_space - this remove whitespace in string
 *after it is call
-*@stri: string to be edited
+*@sf: string to be edited
 *Return: Returns the edited string
 */
 
