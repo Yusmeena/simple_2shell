@@ -38,7 +38,7 @@ int builtin_value(char **line)
 int pro_builtin(char **line, int k)
 {
 	builtincmd exe_builtin[] = {
-		{"cd", ch_dir},
+		{"cd", sh_dir},
 		{"env", display_env},
 		{"echo", echoit_handler},
 		{"history", echoit_history},

@@ -21,7 +21,7 @@
 extern char **environ;
 
 /* This is for error message */
-void see_err(char *line, int exe, char **argv);
+void see_error(char *line, int exe, char **argv);
 void this_perror(char **argv, int stri, char **line);
 void this_error(char **argv, int stri);
 
@@ -33,8 +33,8 @@ void this_error(char **argv, int stri);
  */
 int builtin_value(char **line);
 int pro_builtin(char **line, int k);
-int ch_dir(char **line, __attribute__((unused))int K);
-
+/*int sh_dir(char **line, __attribute__((unused))int K);*/
+int sh_dir(char *line);
 /**
 *display_env - Funtion to display env
 *@line: pointer to command

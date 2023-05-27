@@ -6,17 +6,18 @@
 *@k: command status
 *Return: 0 if success
 */
-int sh_dir(char **line, __attribute__((unused))int k)
+/*int sh_dir(char **line, __attribute__((unused))int k)*/
+int sh_dir(char *line)
 {
 	int count = -1;
 	char cwd[PATH_MAX];
 
 	if (line[1] == NULL)
-		count = chdir(getenv("HOME"));
+		count = sh_dir(getenv("HOME"));
 	else if (this_strcmp(line[1], "-") == 0)
-		count = chdir(getenv("OLDPWD"));
+		count = sh_dir(getenv("OLDPWD"));
 	else
-		count = chdir(line[1]);
+		count = sh_dir(line[1]);
 
 	if (count == -1)
 	{
